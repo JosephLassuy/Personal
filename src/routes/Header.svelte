@@ -13,14 +13,14 @@
 			<li aria-current={page.url.pathname === '/' ? 'page' : undefined}>
 				<a class="text-blue-800" href="/">Home</a>
 			</li>
-			<li aria-current={page.url.pathname === '/projects' ? 'page' : undefined}>
+			<!-- <li aria-current={page.url.pathname === '/projects' ? 'page' : undefined}>
 				<a class="text-blue-800" href="/projects">Projects</a>
-			</li>
+			</li> -->
 		</ul>
 	</nav>
 	<div class="absolute right-4">
 		<a
-			href="https://github.com/joseph-lassuy"
+			href="https://github.com/JosephLassuy"
 			class="flex items-center gap-2 transition-colors hover:text-gray-700"
 		>
 			<img src="/github-mark.svg" alt="GitHub" class="h-6 w-6" />
