@@ -1,28 +1,25 @@
 FROM oven/bun:1 as builder
 WORKDIR /app
 
-# Copy package.json and bun.lockb (if it exists)
+# Copy package files
 COPY package.json .
-COPY bun.lockb* .
 
-# Install dependencies
-RUN bun install --frozen-lockfile
+# Install dependencies (this will generate bun.lockb)
+RUN bun install
 
-# Copy the rest of the application
+# Copy source code
 COPY . .
 
 # Build the application
 RUN bun run build
 
-# Production image
+# Production stage
 FROM oven/bun:1-slim
 WORKDIR /app
 
-# Copy only the necessary files from builder
+# Copy built assets from builder
 COPY --from=builder /app/build build/
 COPY --from=builder /app/package.json .
 
 EXPOSE 3000
-ENV NODE_ENV=production
-
-CMD ["bun", "build"]
+CMD ["bun", "start"]
